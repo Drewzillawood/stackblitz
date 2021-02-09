@@ -8,12 +8,15 @@ import { StoreModule } from "@ngrx/store";
 import { HttpClientModule } from "@angular/common/http";
 import { BookListComponent } from "./book-list/book-list.component";
 import { BookCollectionComponent } from "./book-collection/book-collection.component";
+import {environment} from '../environments/environment.prod';
+import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 
 @NgModule({
   imports: [
     BrowserModule,
     StoreModule.forRoot({ books: booksReducer, collection: collectionReducer }),
-    HttpClientModule
+    HttpClientModule,
+    StoreDevtoolsModule.instrument({ logOnly: environment.production })
   ],
   declarations: [AppComponent, BookListComponent, BookCollectionComponent],
   bootstrap: [AppComponent]
